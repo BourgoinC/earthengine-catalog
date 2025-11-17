@@ -540,7 +540,8 @@ class Collection:
     for band in bands:
       yield Band.from_stac(band)
 
-  def schemas(self) -> Iterator[Property]:
+  @listify
+  def schemas(self) -> Iterable[Property]:
     summaries = self.stac_json.get('summaries')
     if not summaries:
       return
